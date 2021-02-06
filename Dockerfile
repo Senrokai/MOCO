@@ -1,14 +1,17 @@
-FROM node:14-alpine
+FROM node:14-alpine as builder
+
+WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 
-RUN npm install && mkdir /app-ui && mv ./node_modules ./app-ui
-
-WORKDIR /app-ui
+RUN npm ci
+RUN npm i -g @angular/cli
 
 COPY . .
+RUN ng build --prod
 
-EXPOSE 4200
+FROM nginx:alpine
 
-CMD ["sh", "-c", "npm run ng serve --host=0.0.0.0 --port=4200"]
+WORKDIR /usr/share/nginx/html
 
+COPY --from=builder /usr/src/app/dist/MOCOApp .
