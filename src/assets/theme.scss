@@ -1,0 +1,53 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$moco-app-palette: (
+  50 : #e8f6f5,
+  100 : #c5e9e6,
+  200 : #9fdad5,
+  300 : #79cbc4,
+  400 : #5cc0b8,
+  500 : #3fb5ab,
+  600 : #39aea4,
+  700 : #31a59a,
+  800 : #299d91,
+  900 : #1b8d80,
+  A100 : #c6fff8,
+  A200 : #93fff2,
+  A400 : #60ffeb,
+  A700 : #47ffe8,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$MOCOApp-primary: mat-palette($moco-app-palette);
+$MOCOApp-accent: mat-palette($moco-app-palette, A700);
+$MOCOApp-warn: mat-palette($mat-deep-orange);
+$MOCOApp-theme: mat-light-theme($MOCOApp-primary, $MOCOApp-accent, $MOCOApp-warn);
+
+
+@include angular-material-theme($MOCOApp-theme);
+
+.alternate-theme {
+  $alternate-primary: mat-palette($mat-light-blue);
+  $alternate-accent: mat-palette($mat-yellow, 400);
+
+  $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
+
+  @include angular-material-theme($alternate-theme);
+}
