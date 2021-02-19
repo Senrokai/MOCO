@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ArchetypeService} from '../services/archetype.service';
 import {Weapon} from '../models/weapon';
 import {WeaponType} from '../models/weapon-type';
+import {Destiny2Service} from '../destinyAPI';
 
 @Component({
   selector: 'app-root',
@@ -32,13 +33,15 @@ export class AppComponent{
     heavy: 'Veuillez tirer au sort !'
   };
 
-  constructor(private archetypeService: ArchetypeService) {
+  constructor(private archetypeService: ArchetypeService,
+              private destiny2Service: Destiny2Service) {
     this.kineticWeapons = this.archetypeService.getCineticWeapons();
     this.energyWeapons = this.archetypeService.getEnergeticWeapons();
     this.heavyWeapons = this.archetypeService.getHeavyWeapons();
     this.kineticShortRangeWeapons = this.archetypeService.getCineticShortRangeWeapons();
     this.energyShortRangeWeapons = this.archetypeService.getEnergeticShortRangeWeapons();
     this.heavyShortRangeWeapons = this.archetypeService.getHeavyShortRangeWeapons();
+    //this.destiny2Service.destiny2GetDestinyManifest().subscribe(data => {console.log(data); });
   }
 
   public random(max: number): number{
