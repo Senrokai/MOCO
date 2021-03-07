@@ -10,7 +10,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { DestinyHistoricalStatsDestinyLeaderboard} from './DestinyHistoricalStatsDestinyLeaderboard';
+import { DestinyHistoricalStatsDestinyLeaderboard } from './destinyHistoricalStatsDestinyLeaderboard';
 
 
 export interface DestinyHistoricalStatsDestinyLeaderboardResults {
